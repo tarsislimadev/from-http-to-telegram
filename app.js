@@ -4,11 +4,13 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
-const access = (_, res) => res
-  .setHeader('Access-Control-Allow-Origin', '*')
-  .setHeader('Access-Control-Allow-Headers', '*')
-  .setHeader('Access-Control-Allow-Methods', '*')
-  .setHeader('Access-Control-Allow-Credentials', true)
+const access = (_, res) =>
+  res
+    .setHeader('Access-Control-Allow-Origin', '*')
+    .setHeader('Access-Control-Allow-Headers', '*')
+    .setHeader('Access-Control-Allow-Methods', '*')
+    .setHeader('Access-Control-Allow-Credentials', true)
+    .send()
 
 app.head('/', access)
 
