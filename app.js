@@ -5,7 +5,17 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
 app.post('/', (req, res) => {
-  res.json({ status: 'ok', data: req.body })
+  const token = process.env.TELEGRAM_TOKEN
+  const chatId = process.env.TELEGRAM_CHAT_ID
+  const message = Object.keys(req.body).map((k) => `${k}: ${req.body[k]}`).join('\n\n')
+  const url = `https://api.telegram.org/bot${token}/sendMessage`
+  const method = 'POST'
+  const headers = { 'Content-Type': 'application/json' }
+  const body = { chat_id: chatId, text: message }
+  fetch(url, { method, headers, body: JSON.stringify({ ...body }) })
+    .then((res) => res.json())
+    .then(console.log)
+    .finally(() => res.json({ status: 'ok', data: { ...req.body } }))
 })
 
 module.exports = app
