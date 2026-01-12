@@ -1,4 +1,4 @@
-# [From HTTP requests to Telegram API]
+# Project Overview
 
 This project is a Node.js application that acts as a bridge between HTTP requests and the Telegram Bot API. It exposes an HTTP endpoint that receives POST requests and forwards the data to a specified Telegram chat. This is useful for receiving notifications from webhooks or other services that can send HTTP requests.
 
@@ -24,3 +24,8 @@ To run this project, you need to have Node.js and npm installed.
     ```
     The application will start and listen for incoming HTTP requests on the port specified in the `bin/www` file (default is 3000).
 
+## Development Conventions
+
+The codebase is written in JavaScript (ES6) and follows standard Node.js conventions. The code is not using any linter or formatter, so it is recommended to add one to maintain the code quality.
+
+The project does not have any tests, so it is recommended to add a testing framework like Jest or Mocha to ensure the application is working as expected.
