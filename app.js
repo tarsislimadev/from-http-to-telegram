@@ -5,7 +5,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
 app.post('/', (req, res) => {
-  res.json({ status: 'ok' })
+  res.json({ status: 'ok', data: req.body })
 })
 
 module.exports = app
